@@ -1,0 +1,61 @@
+{
+    "unet_def": {
+        "input_nc": 1,
+        "output_nc": 1,
+        "num_downs": 4
+    },
+
+    "atten_unet_def": {
+        "spatial_dims": 3,
+        "in_channels": 1,
+        "out_channels": 1,
+        "num_channels": [
+            16,
+            32,
+            64,
+            128
+        ],
+        "num_res_blocks": 2,
+        "attention_levels": [
+            false,
+            false,
+            false,
+            true
+        ],
+        "norm_num_groups": 16,
+        "norm_eps": 1e-06,
+        "resblock_updown": true,
+        "num_head_channels": [
+            0,
+            0,
+            0,
+            32
+        ],
+        "with_conditioning": true,
+        "transformer_num_layers": 1,
+        "upcast_attention": false,
+        "use_flash_attention": false
+    },
+
+    "discriminator": {
+        "spatial_dims": 3,
+        "num_channels": 64,
+        "num_layers_d": 3,
+        "in_channels": 1,
+        "out_channels": 1
+    },
+
+    "perceptual_network":{
+        "spatial_dims": 3,
+        "network_type": "squeeze"},
+
+    "training":{
+        "base_lr": 0.0005,
+        "disc_lr": 0.0001,
+        "perceptual_weight": 0,
+        "adv_weight": 0.1,
+        "kl_weight": 0.01
+    }
+        
+
+}
